@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        
+        <title>Cadastro de Equipamentos</title>
+        <link rel="stylesheet" th:href="@{/css/index.css}" />
+        <script th:src="@{/js/index.js}"></script>
+    </head>
+
+    <body>
+
+        <h1>Bem-vindo ao Sistema de Armazenamento de Equipamentos</h1>
+
+        <button onclick="cadastrar()">Armazenar</button>
+
+        <img th:src="@{/img/logo.png}" alt="Imagem de Equipamento" />
+
+        <ul>
+            <li><a th:href="@{/cadastrados}">PAGINDA CADASTRADOS</a></li>       
+        </ul>
+
+    </body>
+</html>
