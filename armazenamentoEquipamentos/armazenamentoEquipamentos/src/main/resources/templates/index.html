@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sistema de Armazenamento de Equipamentos</title>
-        <link rel="stylesheet" th:href="@{/css/index.css}" />
-        <script th:src="@{/js/index.js}"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sistema de Armazenamento</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+    <script th:src="@{/js/index.js}"></script>
+  </head>
 
-    <body>
-        <header>
-            <h1>Sistema de Armazenamento de Equipamentos</h1>
-        </header>
+  <body>
+    <header class="navbar">
+      <div class="logo-area">
+        <img th:src="@{/img/logo.png}" alt="Logo" class="logo" />
+        <h1>EquipManager</h1>
+      </div>
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/cadastro}">Cadastrar</a>
+        <a th:href="@{/cadastrados}">Cadastrados</a>
+      </nav>
+    </header>
 
-        <main>
-            <section class="intro">
-                <img th:src="@{/img/logo.png}" alt="Logo do Sistema" class="logo" />
+    <main class="container">
+      <section class="intro">
+        <h2>Bem-vindo ao EquipManager</h2>
+        <p>
+          Gerencie seus equipamentos com facilidade.  
+          Cadastre, visualize e mantenha tudo organizado em um só lugar.
+        </p>
+      </section>
 
-                <p>Gerencie seus equipamentos de forma simples e eficiente.  
-                Cadastre, visualize e acompanhe seus itens em um só lugar.</p>
-            </section>
+      <section class="cards">
+        <div class="card">
+          <h3>Adicionar Equipamento</h3>
+          <p>Cadastre novos itens e mantenha o estoque atualizado.</p>
+          <a th:href="@{/cadastro}" class="btn">Cadastrar</a>
+        </div>
 
-            <section class="acoes">
-                <div class="card">
-                    <h2>Cadastrar Equipamento</h2>
-                    <p>Adicione um novo item ao sistema e mantenha o controle atualizado.</p>
-                    <a th:href="@{/cadastro}" class="btn">Ir para Cadastro</a>
-                </div>
+        <div class="card">
+          <h3>Ver Itens Cadastrados</h3>
+          <p>Visualize todos os equipamentos já armazenados.</p>
+          <a th:href="@{/cadastrados}" class="btn">Ver Lista</a>
+        </div>
+      </section>
+    </main>
 
-                <div class="card">
-                    <h2>Ver Cadastrados</h2>
-                    <p>Consulte os equipamentos já armazenados no sistema.</p>
-                    <a th:href="@{/cadastrados}" class="btn">Ver Lista</a>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>© 2025 - Sistema de Armazenamento | Desenvolvido por Bruno</p>
-        </footer>
-    </body>
+   
+  </body>
 </html>

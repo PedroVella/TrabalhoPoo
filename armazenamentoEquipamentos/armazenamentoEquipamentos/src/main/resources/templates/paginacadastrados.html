@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Equipamentos Cadastrados</title>
-        <link rel="stylesheet" th:href="@{/css/index.css}" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Equipamentos Cadastrados</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+  </head>
 
-    <body>
-        <header>
-            <h1>Equipamentos Cadastrados</h1>
-        </header>
+  <body>
+    <header class="navbar">
+      <div class="logo-area">
+        <img th:src="@{/img/logo.png}" alt="Logo" class="logo" />
+        <h1>EquipManager</h1>
+      </div>
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/cadastro}">Cadastrar</a>
+        <a th:href="@{/cadastrados}" class="active">Cadastrados</a>
+      </nav>
+    </header>
 
-        <main>
-            <section class="tabela">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Tipo</th>
-                            <th>Quantidade</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Notebook</td>
-                            <td>Eletrônico</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Projetor</td>
-                            <td>Imagem</td>
-                            <td>2</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+    <main class="container">
+      <h2>Equipamentos Cadastrados</h2>
 
-            <div class="botoes">
-                <a th:href="@{/}" class="btn voltar">Voltar para a Página Inicial</a>
-                <a th:href="@{/cadastro}" class="btn cadastrar">Cadastrar Novo Equipamento</a>
-            </div>
-        </main>
+      <div class="search-area">
+        <input type="text" placeholder="Buscar equipamento..." />
+        <button>Pesquisar</button>
+      </div>
 
-        <footer>
-            <p>© 2025 - Sistema de Armazenamento | Desenvolvido por Bruno</p>
-        </footer>
-    </body>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Notebook</td>
+            <td>Eletrônico</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Projetor</td>
+            <td>Imagem</td>
+            <td>2</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    
+  </body>
 </html>
