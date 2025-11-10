@@ -2,33 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Armazenamento</title>
-    <link rel="stylesheet" th:href="@{/css/index.css}" />
-    <script th:src="@{/js/index.js}"></script>
+    <title>Início - Sistema de Equipamentos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
+    <header class="navbar">
         <div class="logo-area">
-            <h1>⚙️ Sistema de Armazenamento</h1>
+            <img th:src="@{/img/logo.png}" alt="Logo" class="logo">
+            <h2>EquipManager</h2>
         </div>
         <nav>
+            <a th:href="@{/}" class="active">Início</a>
             <a th:href="@{/cadastro}">Cadastrar</a>
             <a th:href="@{/cadastrados}">Cadastrados</a>
             <a th:href="@{/login}" class="login-btn">Login</a>
         </nav>
     </header>
 
-    <main>
+    <main class="container">
+        <img th:src="@{/img/logo.png}" alt="Logo do Sistema" class="logo">
+        
         <section class="intro">
-            <h2>Bem-vindo!</h2>
+            <h2>Bem-vindo ao EquipManager!</h2>
             <p>Gerencie seus equipamentos de forma simples, rápida e eficiente.</p>
-           
         </section>
+
+        <div class="cards">
+            <div class="card">
+                <h3>📝 Cadastrar</h3>
+                <p>Adicione novos equipamentos ao sistema de forma rápida e organizada.</p>
+                <a th:href="@{/cadastro}" class="btn">Ir para Cadastro</a>
+            </div>
+            <div class="card">
+                <h3>📋 Visualizar</h3>
+                <p>Consulte todos os equipamentos já cadastrados no sistema.</p>
+                <a th:href="@{/cadastrados}" class="btn">Ver Cadastrados</a>
+            </div>
+            <div class="card">
+                <h3>🔐 Acesso</h3>
+                <p>Faça login para acessar funcionalidades avançadas do sistema.</p>
+                <a th:href="@{/login}" class="btn">Fazer Login</a>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>© 2025 - Sistema de Armazenamento | FATEC</p>
+        <p>© 2025 Sistema de Armazenamento de Equipamentos</p>
     </footer>
 </body>
 </html>
