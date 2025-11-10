@@ -1,49 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Sistema de Armazenamento</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Equipamentos</title>
     <link rel="stylesheet" th:href="@{/css/index.css}" />
     <script th:src="@{/js/index.js}"></script>
-  </head>
+</head>
 
-  <body>
-    <header class="navbar">
-      <div class="logo-area">
-        <img th:src="@{/img/logo.png}" alt="Logo" class="logo" />
-        <h1>EquipManager</h1>
-      </div>
-      <nav>
-        <a th:href="@{/}">Início</a>
-        <a th:href="@{/cadastro}">Cadastrar</a>
-        <a th:href="@{/cadastrados}">Cadastrados</a>
-      </nav>
+<body>
+    <header>
+        <h1>⚙️ Sistema de Armazenamento de Equipamentos</h1>
+        <nav>
+            <a th:href="@{/cadastro}">Cadastrar</a>
+            <a th:href="@{/cadastrados}">Cadastrados</a>
+            <a th:href="@{/login}" class="login-btn">Login</a>
+        </nav>
     </header>
 
-    <main class="container">
-      <section class="intro">
-        <h2>Bem-vindo ao EquipManager</h2>
-        <p>
-          Gerencie seus equipamentos com facilidade.  
-          Cadastre, visualize e mantenha tudo organizado em um só lugar.
-        </p>
-      </section>
-
-      <section class="cards">
-        <div class="card">
-          <h3>Adicionar Equipamento</h3>
-          <p>Cadastre novos itens e mantenha o estoque atualizado.</p>
-          <a th:href="@{/cadastro}" class="btn">Cadastrar</a>
-        </div>
-
-        <div class="card">
-          <h3>Ver Itens Cadastrados</h3>
-          <p>Visualize todos os equipamentos já armazenados.</p>
-          <a th:href="@{/cadastrados}" class="btn">Ver Lista</a>
-        </div>
-      </section>
+    <main>
+        <section class="intro">
+            <img th:src="@{/img/logo.png}" alt="Imagem de Equipamento" class="logo" />
+            <h2>Gerencie seus equipamentos com facilidade</h2>
+            <p>Cadastre, visualize e organize seus equipamentos de forma simples e rápida.</p>
+            <button onclick="cadastrar()">Iniciar Cadastro</button>
+        </section>
     </main>
 
-   
-  </body>
+    <footer>
+        <p>© 2025 - Sistema de Armazenamento | FATEC</p>
+    </footer>
+</body>
 </html>
