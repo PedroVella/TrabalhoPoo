@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Cadastro de Equipamentos</title>
-        <link rel="stylesheet" th:href="@{/css/style.css}" />
-        <script th:src="@{/js/index.js}"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Equipamentos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
 
-    <body>
-
+<body>
+    <header class="navbar">
         <h1>Cadastro de Equipamentos</h1>
+        <nav>
+            <a th:href="@{/}">Início</a>
+            <a th:href="@{/cadastrados}">Cadastrados</a>
+        </nav>
+    </header>
 
-        <form onsubmit="return cadastrar()">
-            <label for="nome">Nome do Equipamento:</label><br>
-            <input type="text" id="nome" name="nome" required><br><br>
+    <main class="container">
+        <img th:src="@{/img/logo.png}" alt="Logo do Sistema" class="logo">
 
-            <label for="tipo">Tipo:</label><br>
-            <input type="text" id="tipo" name="tipo" required><br><br>
+        <div class="intro">
+            <h2>Preencha os dados do equipamento</h2>
+            <p>Informe as informações abaixo para armazenar um novo equipamento no sistema.</p>
+        </div>
 
-            <label for="quantidade">Quantidade:</label><br>
-            <input type="number" id="quantidade" name="quantidade" min="1" required><br><br>
+        <form class="card" style="max-width: 400px; text-align: left;">
+            <label for="nome">Nome do Equipamento:</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Furadeira Bosch" required><br><br>
 
-            <button type="submit">Cadastrar</button>
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" name="tipo" placeholder="Ex: Elétrico, Mecânico..." required><br><br>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5" required><br><br>
+
+            <label for="local">Local de Armazenamento:</label>
+            <input type="text" id="local" name="local" placeholder="Ex: Prateleira A2" required><br><br>
+
+            <button type="button" onclick="alert('Equipamento cadastrado com sucesso!')">Cadastrar</button>
         </form>
+    </main>
 
-        <br>
-        <a th:href="@{/}">Voltar para a página inicial</a>
-
-    </body>
+    <footer>
+        <p>© 2025 Sistema de Armazenamento de Equipamentos</p>
+    </footer>
+</body>
 </html>
