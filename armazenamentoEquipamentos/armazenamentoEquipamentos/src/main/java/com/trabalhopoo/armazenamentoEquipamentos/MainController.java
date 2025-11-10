@@ -20,4 +20,9 @@ public class MainController {
     public String cadastro() {
         return "paginacadastro";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login"; 
+    }
 }
