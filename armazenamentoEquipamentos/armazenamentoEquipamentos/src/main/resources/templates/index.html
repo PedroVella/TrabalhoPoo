@@ -2,14 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Equipamentos</title>
+    <title>Sistema de Armazenamento</title>
     <link rel="stylesheet" th:href="@{/css/index.css}" />
     <script th:src="@{/js/index.js}"></script>
 </head>
 
 <body>
     <header>
-        <h1>⚙️ Sistema de Armazenamento de Equipamentos</h1>
+        <div class="logo-area">
+            <h1>⚙️ Sistema de Armazenamento</h1>
+        </div>
         <nav>
             <a th:href="@{/cadastro}">Cadastrar</a>
             <a th:href="@{/cadastrados}">Cadastrados</a>
@@ -19,10 +21,12 @@
 
     <main>
         <section class="intro">
-            <img th:src="@{/img/logo.png}" alt="Imagem de Equipamento" class="logo" />
-            <h2>Gerencie seus equipamentos com facilidade</h2>
-            <p>Cadastre, visualize e organize seus equipamentos de forma simples e rápida.</p>
-            <button onclick="cadastrar()">Iniciar Cadastro</button>
+            <h2>Bem-vindo!</h2>
+            <p>Gerencie seus equipamentos de forma simples, rápida e eficiente.</p>
+            <div class="buttons">
+                <a th:href="@{/cadastro}" class="btn">Cadastrar Equipamento</a>
+                <a th:href="@{/cadastrados}" class="btn secondary">Ver Cadastrados</a>
+            </div>
         </section>
     </main>
 

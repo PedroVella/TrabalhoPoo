@@ -1,0 +1,45 @@
+.intro {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.intro h2 {
+    color: #1e1e2f;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff5252;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e04343;
+}
+
+.btn.secondary {
+    background-color: #1e1e2f;
+}
+
+.btn.secondary:hover {
+    background-color: #34344d;
+}
