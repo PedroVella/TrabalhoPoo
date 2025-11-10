@@ -16,4 +16,8 @@ public class MainController {
         return "paginacadastrados";
     }
 
+    @GetMapping("/cadastro")
+    public String cadastro() {
+        return "paginacadastro";
+    }
 }
