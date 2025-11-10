@@ -2,21 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Cadastro de Equipamentos</title>
+        <title>Sistema de Armazenamento de Equipamentos</title>
         <link rel="stylesheet" th:href="@{/css/index.css}" />
         <script th:src="@{/js/index.js}"></script>
     </head>
 
     <body>
+        <header>
+            <h1>Sistema de Armazenamento de Equipamentos</h1>
+        </header>
 
-        <h1>Bem-vindo ao Sistema de Armazenamento de Equipamentos</h1>
+        <main>
+            <section class="intro">
+                <img th:src="@{/img/logo.png}" alt="Logo do Sistema" class="logo" />
 
-        <img th:src="@{/img/logo.png}" alt="Imagem de Equipamento" />
+                <p>Gerencie seus equipamentos de forma simples e eficiente.  
+                Cadastre, visualize e acompanhe seus itens em um só lugar.</p>
+            </section>
 
-        <ul>
-            <li><a th:href="@{/cadastro}">Cadastrar Equipamento</a></li>       
-            <li><a th:href="@{/cadastrados}">Página Cadastrados</a></li>       
-        </ul>
+            <section class="acoes">
+                <div class="card">
+                    <h2>Cadastrar Equipamento</h2>
+                    <p>Adicione um novo item ao sistema e mantenha o controle atualizado.</p>
+                    <a th:href="@{/cadastro}" class="btn">Ir para Cadastro</a>
+                </div>
 
+                <div class="card">
+                    <h2>Ver Cadastrados</h2>
+                    <p>Consulte os equipamentos já armazenados no sistema.</p>
+                    <a th:href="@{/cadastrados}" class="btn">Ver Lista</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 - Sistema de Armazenamento | Desenvolvido por Bruno</p>
+        </footer>
     </body>
 </html>

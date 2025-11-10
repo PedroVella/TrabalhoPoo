@@ -1,44 +1,113 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+header {
+    background-color: #d32f2f;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
 h1 {
-    color: rgb(255, 0, 0);
+    margin: 0;
+    font-size: 28px;
+}
+
+main {
+    padding: 40px;
     text-align: center;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    background-color: #f9f9f9;
+.intro {
+    margin-bottom: 40px;
 }
 
-form {
+.logo {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
     background: white;
+    width: 260px;
     padding: 20px;
-    width: 300px;
-    margin: 0 auto;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Página Cadastrados */
+table {
+    width: 80%;
+    margin: 0 auto 30px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-label {
-    font-weight: bold;
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
 }
 
-button {
-    background-color: red;
+th {
+    background-color: #d32f2f;
     color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
+    text-transform: uppercase;
 }
 
-button:hover {
-    background-color: darkred;
+tbody tr:hover {
+    background-color: #f1f1f1;
 }
 
-a {
-    display: block;
+.botoes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
     text-align: center;
-    margin-top: 20px;
-    color: blue;
-    text-decoration: none;
+    padding: 10px 0;
+    margin-top: 50px;
+    font-size: 14px;
 }
