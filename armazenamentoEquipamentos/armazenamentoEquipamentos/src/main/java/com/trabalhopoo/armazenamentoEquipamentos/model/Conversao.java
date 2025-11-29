@@ -19,4 +19,17 @@ public class Conversao {
         return produtos;
     }
 
+    public static ArrayList<Equipamento> converterEquipamentos(List<Map<String,Object>> mapa){
+        ArrayList<Equipamento> equipamentos = new ArrayList<>();
+        for(Map<String,Object> registro : mapa){
+            int id = (Integer) registro.get("id");
+            String nome = (String) registro.get("nome");
+            String descricao = (String) registro.get("descricao");
+            String localizacao = (String) registro.get("localizacao");
+            String status = (String) registro.get("status");
+            equipamentos.add(new Equipamento(id, nome, descricao, localizacao, status));
+        }
+        return equipamentos;
+    }
+
 }

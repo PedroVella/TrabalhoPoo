@@ -78,4 +78,51 @@ public class MainController {
         ps.deletar(id);
         return "redirect:/produtos";
     }
+
+    // ROTAS DE EQUIPAMENTOS
+    @GetMapping("/cadastro")
+    public String equipamentoCadastro(Model model){
+        model.addAttribute("equip", new Equipamento());
+        return "paginacadastro";
+    }
+
+    @PostMapping("/cadastro")
+    public String equipamentoCadastro(Model model, @ModelAttribute Equipamento equip){
+        EquipamentoService es = context.getBean(EquipamentoService.class);
+        es.inserirEquipamento(equip);
+        return "redirect:/cadastrados";
+    }
+
+    @GetMapping("/cadastrados")
+    public String equipamentoListar(Model model){
+        EquipamentoService es = context.getBean(EquipamentoService.class);
+        ArrayList<Equipamento> equipamentos = es.listarEquipamentos();
+        model.addAttribute("equipamentos", equipamentos);
+        return "paginacadastrados";
+    }
+
+    @GetMapping("/equipamento/editar/{id}")
+    public String equipamentoEditar(Model model, @PathVariable int id){
+        EquipamentoService es = context.getBean(EquipamentoService.class);
+        Equipamento equip = es.obterEquipamento(id);
+        model.addAttribute("equip", equip);
+        model.addAttribute("id", id);
+        return "paginacadastro";
+    }
+
+    @PostMapping("/equipamento/atualizar/{id}")
+    public String equipamentoAtualizar(Model model, 
+                                       @ModelAttribute Equipamento equip, 
+                                       @PathVariable int id){
+        EquipamentoService es = context.getBean(EquipamentoService.class);
+        es.atualizarEquipamento(id, equip);       
+        return "redirect:/cadastrados";
+    }
+
+    @GetMapping("/equipamento/deletar/{id}")
+    public String equipamentoDeletar(@PathVariable int id){
+        EquipamentoService es = context.getBean(EquipamentoService.class);
+        es.deletar(id);
+        return "redirect:/cadastrados";
+    }
 }
