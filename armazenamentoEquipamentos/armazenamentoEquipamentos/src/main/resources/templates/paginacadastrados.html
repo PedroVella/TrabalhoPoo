@@ -39,24 +39,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:if="${equipamentos.isEmpty()}">
-            <td colspan="6" style="text-align: center; padding: 20px;">Nenhum equipamento cadastrado ainda.</td>
-          </tr>
           <tr th:each="equip : ${equipamentos}">
-            <td th:text="${equip.id}"></td>
-            <td th:text="${equip.nome}"></td>
-            <td th:text="${equip.descricao}"></td>
-            <td th:text="${equip.localizacao}"></td>
-            <td th:text="${equip.status}"></td>
+            <td th:text="${equip.id}">1</td>
+            <td th:text="${equip.nome}">Nome</td>
+            <td th:text="${equip.descricao}">Descrição</td>
+            <td th:text="${equip.localizacao}">Localização</td>
+            <td th:text="${equip.status}">Status</td>
             <td>
               <a th:href="@{/equipamento/editar/{id}(id=${equip.id})}" class="btn-editar">Editar</a>
-              <a th:href="@{/equipamento/deletar/{id}(id=${equip.id})}" class="btn-deletar" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</a>
+              <a th:href="@{/equipamento/deletar/{id}(id=${equip.id})}" class="btn-deletar" 
+                 onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</a>
             </td>
           </tr>
         </tbody>
       </table>
-    </main>
 
-    
+      <div th:if="${#lists.isEmpty(equipamentos)}">
+        <p>Nenhum equipamento cadastrado.</p>
+      </div>
+    </main>
   </body>
 </html>
