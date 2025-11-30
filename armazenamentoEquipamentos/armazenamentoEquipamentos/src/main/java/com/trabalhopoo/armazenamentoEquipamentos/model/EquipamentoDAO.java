@@ -44,30 +44,17 @@ public class EquipamentoDAO {
     }
 
     public ArrayList<Equipamento> listar(String q, Integer usuarioId){
-        if(q == null || q.trim().isEmpty()){
-            if(usuarioId == null){
-                String sql = "SELECT * FROM Equipamento";
-                List<Map<String,Object>> mapa = jdbc.queryForList(sql);
-                return Conversao.converterEquipamentos(mapa);
-            } else {
-                String sql = "SELECT * FROM Equipamento WHERE usuario_id = ?";
-                List<Map<String,Object>> mapa = jdbc.queryForList(sql, usuarioId);
-                return Conversao.converterEquipamentos(mapa);
-            }
-        } else {
-            if(usuarioId == null){
-                String sql = "SELECT * FROM Equipamento WHERE nome ILIKE ? OR descricao ILIKE ? OR localizacao ILIKE ?";
-                String term = "%" + q + "%";
-                List<Map<String,Object>> mapa = jdbc.queryForList(sql, term, term, term);
-                return Conversao.converterEquipamentos(mapa);
-            } else {
-                String sql = "SELECT * FROM Equipamento WHERE usuario_id = ? AND (nome ILIKE ? OR descricao ILIKE ? OR localizacao ILIKE ?)";
-                String term = "%" + q + "%";
-                List<Map<String,Object>> mapa = jdbc.queryForList(sql, usuarioId, term, term, term);
-                return Conversao.converterEquipamentos(mapa);
-            }
-        }
+    if(q == null || q.trim().isEmpty()){
+        String sql = "SELECT * FROM Equipamento WHERE usuario_id = ?";
+        List<Map<String,Object>> mapa = jdbc.queryForList(sql, usuarioId);
+        return Conversao.converterEquipamentos(mapa);
+    } else {
+        String sql = "SELECT * FROM Equipamento WHERE usuario_id = ? AND (nome ILIKE ? OR descricao ILIKE ? OR localizacao ILIKE ?)";
+        String term = "%" + q + "%";
+        List<Map<String,Object>> mapa = jdbc.queryForList(sql, usuarioId, term, term, term);
+        return Conversao.converterEquipamentos(mapa);
     }
+}
 
     public Equipamento obterEquipamento(int id){
         String sql = "SELECT * FROM Equipamento where id=?";

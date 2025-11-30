@@ -19,14 +19,6 @@ public class EquipamentoService {
         edao.atualizarEquipamento(id, equipamento);
     }
 
-    public ArrayList<Equipamento> listarEquipamentos(){
-        return edao.listar();
-    }
-
-    public ArrayList<Equipamento> listarEquipamentos(String q){
-        return edao.listar(q);
-    }
-
     public ArrayList<Equipamento> listarEquipamentos(String q, Integer usuarioId){
         return edao.listar(q, usuarioId);
     }
@@ -38,5 +30,4 @@ public class EquipamentoService {
     public void deletar(int id){
         edao.deletar(id);
     }
-
 }

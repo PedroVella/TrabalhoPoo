@@ -66,13 +66,11 @@ public class MainController {
                                      @RequestParam String senha,
                                      @RequestParam String confirmaSenha,
                                      Model model) {
-        // Validar se as senhas coincidem
         if (!senha.equals(confirmaSenha)) {
             model.addAttribute("erro", "As senhas não coincidem");
             return "cadastrousuario";
         }
 
-        // Validar se username já existe
         UsuarioService us = context.getBean(UsuarioService.class);
         Usuario usuarioExistente = us.obterUsuarioPorUsername(username);
         if (usuarioExistente != null) {
@@ -80,7 +78,6 @@ public class MainController {
             return "cadastrousuario";
         }
 
-        // Criar novo usuário
         Usuario novoUsuario = new Usuario(username, email, senha);
         us.inserirUsuario(novoUsuario);
         
