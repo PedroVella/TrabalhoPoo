@@ -54,6 +54,40 @@ public class MainController {
         return "redirect:/login";
     }
 
+    // ROTAS DE USUÁRIO
+    @GetMapping("/cadastrousuario")
+    public String cadastroUsuario() {
+        return "cadastrousuario";
+    }
+
+    @PostMapping("/cadastrousuario")
+    public String cadastroUsuarioPost(@RequestParam String username,
+                                     @RequestParam String email,
+                                     @RequestParam String senha,
+                                     @RequestParam String confirmaSenha,
+                                     Model model) {
+        // Validar se as senhas coincidem
+        if (!senha.equals(confirmaSenha)) {
+            model.addAttribute("erro", "As senhas não coincidem");
+            return "cadastrousuario";
+        }
+
+        // Validar se username já existe
+        UsuarioService us = context.getBean(UsuarioService.class);
+        Usuario usuarioExistente = us.obterUsuarioPorUsername(username);
+        if (usuarioExistente != null) {
+            model.addAttribute("erro", "Nome de usuário já está em uso");
+            return "cadastrousuario";
+        }
+
+        // Criar novo usuário
+        Usuario novoUsuario = new Usuario(username, email, senha);
+        us.inserirUsuario(novoUsuario);
+        
+        model.addAttribute("sucesso", "Cadastro realizado com sucesso! Faça login para continuar.");
+        return "cadastrousuario";
+    }
+
     
     // ROTAS DE EQUIPAMENTOS
     @GetMapping("/cadastro")
