@@ -23,6 +23,10 @@ public class EquipamentoService {
         return edao.listar();
     }
 
+    public ArrayList<Equipamento> listarEquipamentos(String q){
+        return edao.listar(q);
+    }
+
     public Equipamento obterEquipamento(int id){
         return edao.obterEquipamento(id);
     }

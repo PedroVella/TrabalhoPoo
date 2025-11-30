@@ -22,10 +22,10 @@
     <main class="container">
       <h2>Equipamentos Cadastrados</h2>
 
-      <div class="search-area">
-        <input type="text" placeholder="Buscar equipamento..." />
-        <button>Pesquisar</button>
-      </div>
+      <form th:action="@{/cadastrados}" method="get" class="search-area">
+        <input type="text" name="q" placeholder="Buscar equipamento..." th:value="${q}" />
+        <button type="submit">Pesquisar</button>
+      </form>
 
       <table>
         <thead>

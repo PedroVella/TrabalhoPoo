@@ -35,9 +35,20 @@ public class EquipamentoDAO {
     }
 
     public ArrayList<Equipamento> listar(){
-        String sql = "SELECT * FROM Equipamento";
-        List<Map<String,Object>> mapa = jdbc.queryForList(sql);
-        return Conversao.converterEquipamentos(mapa);
+        return listar(null);
+    }
+
+    public ArrayList<Equipamento> listar(String q){
+        if(q == null || q.trim().isEmpty()){
+            String sql = "SELECT * FROM Equipamento";
+            List<Map<String,Object>> mapa = jdbc.queryForList(sql);
+            return Conversao.converterEquipamentos(mapa);
+        } else {
+            String sql = "SELECT * FROM Equipamento WHERE nome ILIKE ? OR descricao ILIKE ? OR localizacao ILIKE ?";
+            String term = "%" + q + "%";
+            List<Map<String,Object>> mapa = jdbc.queryForList(sql, term, term, term);
+            return Conversao.converterEquipamentos(mapa);
+        }
     }
 
     public Equipamento obterEquipamento(int id){

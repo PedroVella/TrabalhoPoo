@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -85,10 +86,11 @@ public class MainController {
     }
 
     @GetMapping("/cadastrados")
-    public String equipamentoListar(Model model){
+    public String equipamentoListar(Model model, @RequestParam(value = "q", required = false) String q){
         EquipamentoService es = context.getBean(EquipamentoService.class);
-        ArrayList<Equipamento> equipamentos = es.listarEquipamentos();
+        ArrayList<Equipamento> equipamentos = es.listarEquipamentos(q);
         model.addAttribute("equipamentos", equipamentos);
+        model.addAttribute("q", q);
         return "paginacadastrados";
     }
 
