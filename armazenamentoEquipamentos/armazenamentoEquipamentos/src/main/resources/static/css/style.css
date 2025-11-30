@@ -188,3 +188,51 @@ footer {
   font-size: 14px;
   margin-top: 40px;
 }
+
+.btn-editar, .btn-deletar {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-editar {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-deletar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-deletar:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff4b2b;
+  box-shadow: 0 0 5px rgba(255, 75, 43, 0.3);
+}
+

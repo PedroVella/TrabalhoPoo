@@ -26,20 +26,27 @@
             <p>Informe as informações abaixo para armazenar um novo equipamento no sistema.</p>
         </div>
 
-        <form class="card" style="max-width: 400px; text-align: left;">
+        <form class="card" style="max-width: 400px; text-align: left;" 
+              th:action="${id != null} ? @{/equipamento/atualizar/{id}(id=${id})} : @{/cadastro}" 
+              th:object="${equip}" method="POST">
             <label for="nome">Nome do Equipamento:</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex: Furadeira Bosch" required><br><br>
+            <input type="text" id="nome" th:field="*{nome}" placeholder="Ex: Furadeira Bosch" required><br><br>
 
-            <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" name="tipo" placeholder="Ex: Elétrico, Mecânico..." required><br><br>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" th:field="*{descricao}" placeholder="Ex: Furadeira elétrica profissional" required><br><br>
 
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5" required><br><br>
+            <label for="localizacao">Local de Armazenamento:</label>
+            <input type="text" id="localizacao" th:field="*{localizacao}" placeholder="Ex: Prateleira A2" required><br><br>
 
-            <label for="local">Local de Armazenamento:</label>
-            <input type="text" id="local" name="local" placeholder="Ex: Prateleira A2" required><br><br>
+            <label for="status">Status:</label>
+            <select id="status" th:field="*{status}" required>
+                <option value="">Selecione um status</option>
+                <option value="Disponível">Disponível</option>
+                <option value="Em Uso">Em Uso</option>
+                <option value="Manutenção">Manutenção</option>
+            </select><br><br>
 
-            <button type="button" onclick="alert('Equipamento cadastrado com sucesso!')">Cadastrar</button>
+            <button type="submit" th:text="${id != null} ? 'Atualizar' : 'Cadastrar'"></button>
         </form>
     </main>
 

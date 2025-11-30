@@ -73,6 +73,7 @@ public class MainController {
     @GetMapping("/cadastro")
     public String equipamentoCadastro(Model model){
         model.addAttribute("equip", new Equipamento());
+        model.addAttribute("id", null);
         return "paginacadastro";
     }
 
