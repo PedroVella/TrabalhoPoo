@@ -27,14 +27,18 @@
             <p style="text-align:center; color:#555;">Entre para gerenciar os equipamentos</p>
             <br>
 
-            <form>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required><br><br>
+            <div th:if="${erro}" style="background:#ffebee; color:#c62828; padding:10px; border-radius:4px; margin-bottom:15px; text-align:center;">
+                <span th:text="${erro}"></span>
+            </div>
+
+            <form th:action="@{/login}" method="POST">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" placeholder="seu_usuario" required><br><br>
 
                 <label for="senha">Senha:</label>
                 <input type="password" id="senha" name="senha" placeholder="••••••••" required><br><br>
 
-                <button type="button" style="width:100%;" onclick="alert('Login realizado com sucesso!')">Entrar</button>
+                <button type="submit" style="width:100%;">Entrar</button>
             </form>
 
             <p style="text-align:center; margin-top:15px;">
