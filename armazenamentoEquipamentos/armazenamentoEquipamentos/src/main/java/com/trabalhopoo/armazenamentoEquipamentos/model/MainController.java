@@ -54,55 +54,7 @@ public class MainController {
         return "redirect:/login";
     }
 
-    // ROTAS DE PRODUTOS
-    @GetMapping("/produtos")
-    public String produtos(Model model){
-        model.addAttribute("prod", new Produto());
-        ProdutoService ps = context.getBean(ProdutoService.class);
-        ArrayList<Produto> produtos = ps.listarProdutos();
-        model.addAttribute("produtos", produtos);
-        return "produtos";
-    }
-
-    @PostMapping("/produtos")
-    public String produtos(Model model, @ModelAttribute Produto prod, HttpSession session){
-        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
-        prod.setUsuarioId(usuarioId);
-        
-        ProdutoService ps = context.getBean(ProdutoService.class);
-        ps.inserirProduto(prod);
-        return "redirect:/produtos";
-    }
-
-    @GetMapping("/produto/editar/{id}")
-    public String produtoEditar(Model model, @PathVariable int id){
-        ProdutoService ps = context.getBean(ProdutoService.class);
-        Produto prod = ps.obterProduto(id);
-        model.addAttribute("prod", prod);
-        model.addAttribute("id", id);
-        return "produtos";
-    }
-
-    @PostMapping("/produto/atualizar/{id}")
-    public String produtoAtualizar(Model model, 
-                                   @ModelAttribute Produto prod, 
-                                   @PathVariable int id,
-                                   HttpSession session){
-        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
-        prod.setUsuarioId(usuarioId);
-        
-        ProdutoService ps = context.getBean(ProdutoService.class);
-        ps.atualizarProduto(id, prod);       
-        return "redirect:/produtos";
-    }
-
-    @GetMapping("/produto/deletar/{id}")
-    public String produtoDeletar(@PathVariable int id){
-        ProdutoService ps = context.getBean(ProdutoService.class);
-        ps.deletar(id);
-        return "redirect:/produtos";
-    }
-
+    
     // ROTAS DE EQUIPAMENTOS
     @GetMapping("/cadastro")
     public String equipamentoCadastro(Model model){
