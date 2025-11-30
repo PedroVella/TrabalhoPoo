@@ -108,9 +108,11 @@ public class MainController {
     }
 
     @GetMapping("/cadastrados")
-    public String equipamentoListar(Model model, @RequestParam(value = "q", required = false) String q){
+    public String equipamentoListar(Model model, @RequestParam(value = "q", required = false) String q, HttpSession session){
+        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
+        
         EquipamentoService es = context.getBean(EquipamentoService.class);
-        ArrayList<Equipamento> equipamentos = es.listarEquipamentos(q);
+        ArrayList<Equipamento> equipamentos = es.listarEquipamentos(q, usuarioId);
         model.addAttribute("equipamentos", equipamentos);
         model.addAttribute("q", q);
         return "paginacadastrados";
