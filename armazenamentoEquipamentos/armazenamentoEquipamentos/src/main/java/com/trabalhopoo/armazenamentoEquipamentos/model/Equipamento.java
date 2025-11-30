@@ -6,6 +6,7 @@ public class Equipamento {
     private String nome, descricao;
     private String localizacao;
     private String status;
+    private Integer usuarioId;
 
     //Formulario
     public Equipamento(){
@@ -58,5 +59,11 @@ public class Equipamento {
     }
     public void setStatus(String status) {
         this.status = status;
+    }
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }

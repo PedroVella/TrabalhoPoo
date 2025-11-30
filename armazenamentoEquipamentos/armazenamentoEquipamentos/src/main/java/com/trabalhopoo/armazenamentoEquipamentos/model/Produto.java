@@ -6,6 +6,7 @@ public class Produto {
     private String nome, descricao;
     private double preco;
     private int quantidade;
+    private Integer usuarioId;
 
     //Formulario
     public Produto(){
@@ -58,5 +59,11 @@ public class Produto {
     }
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }

@@ -25,12 +25,13 @@ public class EquipamentoDAO {
     }
 
     public void inserirEquipamento(Equipamento equipamento){
-        String sql = "INSERT INTO Equipamento(nome, descricao, localizacao, status) VALUES(?,?,?,?)";
-        Object[] obj = new Object[4];
+        String sql = "INSERT INTO Equipamento(nome, descricao, localizacao, status, usuario_id) VALUES(?,?,?,?,?)";
+        Object[] obj = new Object[5];
         obj[0] = equipamento.getNome();
         obj[1] = equipamento.getDescricao();
         obj[2] = equipamento.getLocalizacao();
         obj[3] = equipamento.getStatus();
+        obj[4] = equipamento.getUsuarioId();
         jdbc.update(sql, obj);
     }
 
@@ -59,18 +60,21 @@ public class EquipamentoDAO {
         String descricao = (String) mapa.get("descricao");
         String localizacao = (String) mapa.get("localizacao");
         String status = (String) mapa.get("status");
+        Integer usuarioId = (Integer) mapa.get("usuario_id");
         Equipamento equip = new Equipamento(idEquipamento, nome, descricao, localizacao, status);
+        equip.setUsuarioId(usuarioId);
         return equip;
     }
 
     public void atualizarEquipamento(int id, Equipamento equipamento){
-        String sql = "UPDATE Equipamento SET nome = ?, descricao = ?, localizacao = ?, status = ? WHERE id = ?";
-        Object[] obj = new Object[5];
+        String sql = "UPDATE Equipamento SET nome = ?, descricao = ?, localizacao = ?, status = ?, usuario_id = ? WHERE id = ?";
+        Object[] obj = new Object[6];
         obj[0] = equipamento.getNome();
         obj[1] = equipamento.getDescricao();
         obj[2] = equipamento.getLocalizacao();
         obj[3] = equipamento.getStatus();
-        obj[4] = id;
+        obj[4] = equipamento.getUsuarioId();
+        obj[5] = id;
         jdbc.update(sql, obj);
     }
 
