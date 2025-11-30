@@ -32,4 +32,20 @@ public class Conversao {
         return equipamentos;
     }
 
+    public static ArrayList<Usuario> converterUsuarios(List<Map<String,Object>> mapa){
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        for (Map<String, Object> registro : mapa){
+            int id = (Integer) registro.get("id");
+            String username = (String) registro.get("username");
+            String email = (String) registro.get("email");
+            String senha = (String) registro.get("senha");
+            java.sql.Timestamp ts = (java.sql.Timestamp) registro.get("data_criacao");
+            java.time.LocalDateTime dataCriacao = ts != null ? ts.toLocalDateTime() : null;
+            
+            Usuario u = new Usuario(id, username, email, senha, dataCriacao);
+            usuarios.add(u);
+        }
+        return usuarios;
+    }
+
 }

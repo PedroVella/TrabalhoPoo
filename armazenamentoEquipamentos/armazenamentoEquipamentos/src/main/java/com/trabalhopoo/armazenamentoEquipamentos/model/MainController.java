@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MainController {
 
@@ -28,6 +30,30 @@ public class MainController {
         return "login"; 
     }
 
+    @PostMapping("/login")
+    public String loginPost(@RequestParam String username, 
+                           @RequestParam String senha, 
+                           HttpSession session, 
+                           Model model) {
+        UsuarioService us = context.getBean(UsuarioService.class);
+        Usuario usuario = us.obterUsuarioPorUsername(username);
+        
+        if (usuario != null && usuario.getSenha().equals(senha)) {
+            session.setAttribute("usuarioId", usuario.getId());
+            session.setAttribute("username", usuario.getUsername());
+            return "redirect:/cadastrados";
+        } else {
+            model.addAttribute("erro", "Usuário ou senha inválidos");
+            return "login";
+        }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
+
     // ROTAS DE PRODUTOS
     @GetMapping("/produtos")
     public String produtos(Model model){
@@ -35,11 +61,14 @@ public class MainController {
         ProdutoService ps = context.getBean(ProdutoService.class);
         ArrayList<Produto> produtos = ps.listarProdutos();
         model.addAttribute("produtos", produtos);
-        return "index";
+        return "produtos";
     }
 
     @PostMapping("/produtos")
-    public String produtos(Model model, @ModelAttribute Produto prod){
+    public String produtos(Model model, @ModelAttribute Produto prod, HttpSession session){
+        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
+        prod.setUsuarioId(usuarioId);
+        
         ProdutoService ps = context.getBean(ProdutoService.class);
         ps.inserirProduto(prod);
         return "redirect:/produtos";
@@ -51,13 +80,17 @@ public class MainController {
         Produto prod = ps.obterProduto(id);
         model.addAttribute("prod", prod);
         model.addAttribute("id", id);
-        return "index";
+        return "produtos";
     }
 
     @PostMapping("/produto/atualizar/{id}")
     public String produtoAtualizar(Model model, 
                                    @ModelAttribute Produto prod, 
-                                   @PathVariable int id){
+                                   @PathVariable int id,
+                                   HttpSession session){
+        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
+        prod.setUsuarioId(usuarioId);
+        
         ProdutoService ps = context.getBean(ProdutoService.class);
         ps.atualizarProduto(id, prod);       
         return "redirect:/produtos";
@@ -79,7 +112,10 @@ public class MainController {
     }
 
     @PostMapping("/cadastro")
-    public String equipamentoCadastro(Model model, @ModelAttribute Equipamento equip){
+    public String equipamentoCadastro(Model model, @ModelAttribute Equipamento equip, HttpSession session){
+        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
+        equip.setUsuarioId(usuarioId);
+        
         EquipamentoService es = context.getBean(EquipamentoService.class);
         es.inserirEquipamento(equip);
         return "redirect:/cadastrados";
@@ -106,7 +142,11 @@ public class MainController {
     @PostMapping("/equipamento/atualizar/{id}")
     public String equipamentoAtualizar(Model model, 
                                        @ModelAttribute Equipamento equip, 
-                                       @PathVariable int id){
+                                       @PathVariable int id,
+                                       HttpSession session){
+        Integer usuarioId = (Integer) session.getAttribute("usuarioId");
+        equip.setUsuarioId(usuarioId);
+        
         EquipamentoService es = context.getBean(EquipamentoService.class);
         es.atualizarEquipamento(id, equip);       
         return "redirect:/cadastrados";
