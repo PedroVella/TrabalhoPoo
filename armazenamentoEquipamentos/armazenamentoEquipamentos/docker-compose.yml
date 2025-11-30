@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: equipmanager-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://dpg-d4lg5r2li9vc73e9ffhg-a.oregon-postgres.render.com:5432/dbferramentas
+      SPRING_DATASOURCE_USERNAME: pedrovella
+      SPRING_DATASOURCE_PASSWORD: WHCfQH8fvmXnDkcnuJ5XFKBPL13xFH45
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
